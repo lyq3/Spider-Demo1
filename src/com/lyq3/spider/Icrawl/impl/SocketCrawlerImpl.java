@@ -32,7 +32,7 @@ public class SocketCrawlerImpl implements ICrawler{
 		BufferedReader br = null;
 		try {
 			//创建Socket连接
-			Socket socket = new Socket(url.getUrl(), url.getPor());
+			Socket socket = new Socket(new URL(url.getUrl()).getHost(), url.getPor());
 //			socket.setKeepAlive(false);
 			//获取输出流
 			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -80,7 +80,7 @@ public class SocketCrawlerImpl implements ICrawler{
 	 */
 	public static void main(String[] args) {
 		SocketCrawlerImpl crawlerImpl = new SocketCrawlerImpl();
-		CrawlResult crawlResult = crawlerImpl.crawl(new Url("www.taobao.com", 80));
+		CrawlResult crawlResult = crawlerImpl.crawl(new Url("http://www.taobao.com", 80));
 		System.out.println(crawlResult.getPageContent());
 	}
 

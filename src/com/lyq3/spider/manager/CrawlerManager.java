@@ -1,6 +1,7 @@
 package com.lyq3.spider.manager;
 
 import com.lyq3.spider.Icrawl.ICrawler;
+import com.lyq3.spider.Icrawl.impl.HttpUrlConnectionCrawlerImpl;
 import com.lyq3.spider.Icrawl.impl.SocketCrawlerImpl;
 import com.lyq3.spider.po.CrawlResult;
 import com.lyq3.spider.po.Url;
@@ -17,7 +18,7 @@ public class CrawlerManager {
 		if (isSoket) {//soket连接
 			this.crawler = new SocketCrawlerImpl();
 		}else {//其他连接
-			
+			this.crawler = new HttpUrlConnectionCrawlerImpl();
 		}
 	}
 
